@@ -3,9 +3,9 @@ import numpy as np
 import tensorflow as tf
 from keras.layers import Dense
 from keras.initializers.initializers_v2 import RandomUniform
-from keras.optimizer_v2.adam import Adam
+from keras.optimizers.optimizer_v2.adam import Adam
 
-import sys, os
+import sys, osg
 sys.path.append("C:\\Users\\kenny\\PycharmProjects\\CartpoleDQN\\SIMULATION")
 from SIMULATION import simulation
 
