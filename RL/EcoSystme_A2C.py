@@ -5,7 +5,7 @@ from keras.layers import Dense
 from keras.initializers.initializers_v2 import RandomUniform
 from keras.optimizers.optimizer_v2.adam import Adam
 
-import sys, osg
+import sys, os
 sys.path.append("C:\\Users\\kenny\\PycharmProjects\\CartpoleDQN\\SIMULATION")
 from SIMULATION import simulation
 
@@ -101,8 +101,10 @@ if __name__ == "__main__":
         loss_list = []
         state = env.reset(animal_array)
         state = np.reshape(state, [1, state_size])
-
+        step_in_ep = 0
+        step_list = []
         while not done:
+            step_in_ep += 1
             if agent.render:
                 env.render()
 
@@ -118,14 +120,16 @@ if __name__ == "__main__":
             loss = agent.train_model(state, action, reward, next_state, done)
             loss_list.append(loss)
             state = next_state
-            print("Episode", e, "Simulate with new state : ", state)
+            print("Episode", e, "step",step_in_ep,"Simulate with new state : ", state)
             if done:
                 # 에피소드마다 학습 결과 출력
                 if score != -1000:
-                    print("Desired Ecosystem's Animal Number : ",state[0][0],state[0][1],state[0][4])
+                    print("Desired Ecosystem's Animal Number : ",state)
                 score_avg = 0.9 * score_avg + 0.1 * score if score_avg != 0 else score
                 print("episode: {:3d} | score avg: {:3.2f} | loss: {:.3f}".format(
                       e, score_avg, np.mean(loss_list)))
-
+                step_list.append(step_in_ep)
+                print(step_list)
+                step_in_ep = 0
                 # 에피소드마다 학습 결과 그래프로 저장
 

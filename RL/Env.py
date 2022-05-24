@@ -111,7 +111,7 @@ class EcoSystemEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         #print("A : ", self.state)
         sim_tick = simulation.simulate(np.array(self.state, dtype=np.int))
         done = bool( # done -> 충분한 시간이 흐름 Good / 한 종의 멸종 bad/ 한 종이 오바 bad
-            (sim_tick >= 200) or
+            (sim_tick >= 150) or
             (not (a0 and a1 and a2
              and a3 and a4
              and a5 and a6
@@ -123,12 +123,12 @@ class EcoSystemEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
              a8 > self.threshold[8] or a9 > self.threshold[9]
              )
         )
-        if sim_tick >= 200:
+        if sim_tick >= 150:
             print("sim_tick",sim_tick,done)
         print("Lasted tick : ",sim_tick)
         if not done:  #생태계 : 초기값이 범위 내 #임의의 식 학습 : 범위 안에 있지만 tick 이 0을 못넘겼다
             reward = 0 #simulation 이면 sim_tick 줘도 될듯
-        elif sim_tick >= 200:
+        elif sim_tick >= 150:
             reward = sim_tick * 10 # 이거는 진짜 잘한거니깐 sim_tick * 5 줘도 될듯?
         else:
             reward = -1000
