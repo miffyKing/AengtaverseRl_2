@@ -53,8 +53,8 @@ class EcoSystemEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
 
     def __init__(self):
         self.threshold = np.array([
-                1000, 1000, 1000, 1000, 1000,
-                1000, 1000, 1000, 1000, 10000,
+                100, 500, 200, 200, 200,
+                200, 200, 200, 200, 10000,
             ], dtype=np.int,)
         self.action_space = spaces.Discrete(20)  # 10 species inc/dec 0~19
         #self.action_space = spaces.Discrete(18)  # test
