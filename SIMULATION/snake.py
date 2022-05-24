@@ -4,16 +4,15 @@ from lion import Lion
 from leopard import Leopard
 
 class Snake(Animals):
-
-    max_life = 200
-    min_life = 150
+    max_life = 400
+    min_life = 200
     site = 5
-    birth_rate = 0.4
-    hunting_rate = 0.7
+    birth_rate = 0.8
+    hunting_rate = 0.8
     predator = ["Baboon"]
     food = ["Mouse"]
     calorie_waste_rate = 4
-    max_calorie = 600
+    max_calorie = 1000
     calorie = 400
 
     name = "Snake"

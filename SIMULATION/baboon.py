@@ -5,16 +5,16 @@ from leopard import Leopard
 
 class Baboon(Animals):
 
-    max_life = 200
-    min_life = 150
+    max_life = 300
+    min_life = 200
     site = 5
-    birth_rate = 0.4
-    hunting_rate = 0.7
+    birth_rate = 0.8
+    hunting_rate = 0.6
     predator = ["Leopard"]
     food = ["Snake"]
-    calorie_waste_rate = 4
-    max_calorie = 600
-    calorie = 400
+    calorie_waste_rate = 2
+    max_calorie = 800
+    calorie = 300
 
     name = "Baboon"
 

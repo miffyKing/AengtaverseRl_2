@@ -3,14 +3,14 @@ from animal import Animals, Grid_size, Grid, Animal, Site_list_random
 
 class Leopard(Animals):
 
-    max_life = 250
-    min_life = 150
-    site = 5
+    max_life = 300
+    min_life = 200
+    site = 2
     birth_rate = 0.2
-    hunting_rate = 0.8
+    hunting_rate = 0.28  # 레오파드가 먹는 종류가 너무 많다
     predator = []
     food = ["Impala", "Baboon", "Skunk"]
-    calorie_waste_rate = 7
+    calorie_waste_rate = 10
     max_calorie = 1000
 
     name = "Leopard"

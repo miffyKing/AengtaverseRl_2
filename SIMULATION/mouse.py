@@ -3,16 +3,16 @@ from animal import Animals, Grid_size, Grid_Grass, Grid, Animal, Site_list_rando
 
 
 class Mouse(Animals):
-    max_life = 600
-    min_life = 400
-    site = 3
-    birth_rate = 0.6
+    max_life = 300
+    min_life = 200
+    site = 2
+    birth_rate = 0.7
     hunting_rate = 1
     predator = ["Snake"]
     food = ["Grass"]
-    calorie = 400
-    calorie_waste_rate = 0 # 초식동물의 경우, 칼로리 소모를 없애고, 번식하는 경우를 제한했다.
-    max_calorie = 1000
+    calorie = 200
+    calorie_waste_rate = 0  # 초식동물의 경우, 칼로리 소모를 없애고, 번식하는 경우를 제한했다.
+    max_calorie = 600
 
     name = "Mouse"
 

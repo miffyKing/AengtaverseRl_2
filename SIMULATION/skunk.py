@@ -4,17 +4,16 @@ from lion import Lion
 from leopard import Leopard
 
 class Skunk(Animals):
-
-    max_life = 200
-    min_life = 150
-    site = 5
-    birth_rate = 0.3
+    max_life = 300
+    min_life = 200
+    site = 4
+    birth_rate = 0.25
     hunting_rate = 1
     predator = ["Leopard"]
     food = ["Grasshopper", "Mouse"]
     calorie_waste_rate = 4
     max_calorie = 600
-    calorie = 400
+    calorie = 350
 
     name = "Skunk"
 

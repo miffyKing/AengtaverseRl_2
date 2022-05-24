@@ -3,16 +3,16 @@ from animal import Animals, Grid_size, Grid_Grass, Grid, Animal, Site_list_rando
 
 
 class Impala(Animals):
-    max_life = 600
-    min_life = 400
-    site = 3
-    birth_rate = 0.6
+    max_life = 250  # 600
+    min_life = 150  # 400
+    site = 5
+    birth_rate = 0.85
     hunting_rate = 1
     predator = ["Lion"]
     food = ["Grass"]
-    calorie = 400
-    calorie_waste_rate = 0 # 초식동물의 경우, 칼로리 소모를 없애고, 번식하는 경우를 제한했다.
-    max_calorie = 1000
+    calorie = 500
+    calorie_waste_rate = 0  # 초식동물의 경우, 칼로리 소모를 없애고, 번식하는 경우를 제한했다.
+    max_calorie = 600  # 1000
 
     name = "Impala"
 
