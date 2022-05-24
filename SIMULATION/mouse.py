@@ -8,7 +8,7 @@ class Mouse(Animals):
     site = 3
     birth_rate = 0.6
     hunting_rate = 1
-    predator = ["Baboon"]
+    predator = ["Snake"]
     food = ["Grass"]
     calorie = 400
     calorie_waste_rate = 0 # 초식동물의 경우, 칼로리 소모를 없애고, 번식하는 경우를 제한했다.

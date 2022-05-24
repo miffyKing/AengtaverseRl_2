@@ -11,7 +11,7 @@ class Baboon(Animals):
     birth_rate = 0.4
     hunting_rate = 0.7
     predator = ["Leopard"]
-    food = ["Mouse"]
+    food = ["Snake"]
     calorie_waste_rate = 4
     max_calorie = 600
     calorie = 400
@@ -44,6 +44,6 @@ class Baboon(Animals):
 
     def use_turn(self): # 결국 매 틱 실행되는 함수
         self.check_site()
-        #if self.energy_left >= self.max_calorie * self.threshold_birth :
-            #if 1 - self.birth_rate < random.random():
-            #    self.make_child()
+        if self.energy_left >= self.max_calorie * self.threshold_birth :
+            if 1 - self.birth_rate < random.random():
+                self.make_child()

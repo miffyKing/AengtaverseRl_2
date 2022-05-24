@@ -44,6 +44,6 @@ class Skunk(Animals):
 
     def use_turn(self): # 결국 매 틱 실행되는 함수
         self.check_site()
-        #if self.energy_left >= self.max_calorie * self.threshold_birth :
-            #if 1 - self.birth_rate < random.random():
-            #    self.make_child()
+        if self.energy_left >= self.max_calorie * self.threshold_birth :
+            if 1 - self.birth_rate < random.random():
+                self.make_child()

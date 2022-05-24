@@ -22,8 +22,8 @@ Animal = {"Lion" : Lion_list, "Impala" : Impala_list, "Baboon" : Baboon_list,
           "Snake" : Snake_list}
 # 종의 이름들을 담고 있는 리스트
 Animal_Name = ["Lion", "Impala", "Baboon", "Rhino",
-               "Grass", "Leopard", "Mouse", "Grasshopper",
-               "Skunk", "Snake"]
+               "Leopard", "Mouse", "Grasshopper",
+               "Skunk", "Snake", "Grass" ]
 # 종들의 리스트들을 모아놓은 리스트
 Animal_lists = [Lion_list, Impala_list, Baboon_list,
                 Rhino_list, Leopard_list, Mouse_list,
