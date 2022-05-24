@@ -198,8 +198,8 @@ class Animals:
                     #해당 방향으로 move한다
                     if min_distance == 1:
                         # eat하고 move한다.
-                        Animal[what_to_eat].remove(Grid[next_x][next_y])
-                        self.eat_food(next_x, next_y)
+                        Animal[what_to_eat].remove(Grid[min_dirx][min_diry])
+                        self.eat_food(min_dirx, min_diry)
                         self.move(min_dirx - self.x, min_diry - self.y)
                     else:
                         #move만 한다. (아직 충분히 가까이 있지 않음)
