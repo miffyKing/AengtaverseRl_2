@@ -95,6 +95,9 @@ if __name__ == "__main__":
     animal_array = [50, 200, 80, 80, 80, 80, 80, 80, 80, 1000 ]
     num_episode = 1000
     simulation.init_simul()
+
+    step_list = []
+    step_list_fail = []
     for e in range(num_episode):
         done = False
         score = 0
@@ -102,7 +105,6 @@ if __name__ == "__main__":
         state = env.reset(animal_array)
         state = np.reshape(state, [1, state_size])
         step_in_ep = 0
-        step_list = []
         while not done:
             step_in_ep += 1
             if agent.render:
@@ -113,7 +115,7 @@ if __name__ == "__main__":
             next_state = np.reshape(next_state, [1, state_size])
 
             # 타임스텝마다 보상 0.1, 에피소드가 중간에 끝나면 -1 보상
-            score += reward
+            score = reward
             #reward = 0.1 if not done or score == 500 else -1
 
             # 매 타임 스텝마다 학습
@@ -125,11 +127,14 @@ if __name__ == "__main__":
                 # 에피소드마다 학습 결과 출력
                 if score != -1000:
                     print("Desired Ecosystem's Animal Number : ",state)
+                    step_list.append([e, step_in_ep])
+                else:
+                    step_list_fail.append([e, step_in_ep])
                 score_avg = 0.9 * score_avg + 0.1 * score if score_avg != 0 else score
                 print("episode: {:3d} | score avg: {:3.2f} | loss: {:.3f}".format(
                       e, score_avg, np.mean(loss_list)))
-                step_list.append(step_in_ep)
-                print(step_list)
+                print("SUCCESS : ", step_list)
+                print("FAIL ", step_list_fail)
                 step_in_ep = 0
                 # 에피소드마다 학습 결과 그래프로 저장
 
