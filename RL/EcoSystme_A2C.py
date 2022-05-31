@@ -9,6 +9,9 @@ import sys, os
 sys.path.append("C:\\Users\\kenny\\PycharmProjects\\CartpoleDQN\\SIMULATION")
 from SIMULATION import simulation
 
+#sys.path.append("C:\\Users\\82103\\PycharmProjects\\pythonProject3\\AengtaverseRl_2\\SIMULATION")
+#from AengtaverseRl_2.SIMULATION import simulation
+
 class A2C(tf.keras.Model):
     def __init__(self, action_size):
         super(A2C, self).__init__()
@@ -92,12 +95,15 @@ if __name__ == "__main__":
 
     scores, episodes = [], []
     score_avg = 0
-    animal_array = [50, 200, 80, 80, 80, 80, 80, 80, 80, 1000 ]
+    # [Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
+    animal_array = [25, 100, 75, 40, 25, 50, 75, 75, 50, 1250]
     num_episode = 1000
     simulation.init_simul()
 
     step_list = []
     step_list_fail = []
+    f = open("Test4.txt", 'w')
+
     for e in range(num_episode):
         done = False
         score = 0
@@ -122,19 +128,25 @@ if __name__ == "__main__":
             loss = agent.train_model(state, action, reward, next_state, done)
             loss_list.append(loss)
             state = next_state
-            print("Episode", e, "step",step_in_ep,"Simulate with new state : ", state)
+            print("Episode", e, "step",step_in_ep,"Simulated with state : ", state)
             if done:
                 # 에피소드마다 학습 결과 출력
-                if score != -1000:
-                    print("Desired Ecosystem's Animal Number : ",state)
+                if score != -3000:
+                    print("Success, Ecosystem's Animal Number : ",state)
+                    f.writelines(["Success, Ecosystem's Animal Number : ",str(state),"\n"])
                     step_list.append([e, step_in_ep])
                 else:
+                    print("Fail, Ecosystem's Animal Number : ",state)
+                    f.writelines(["Fail, Ecosystem's Animal Number : ",str(state),"\n"])
                     step_list_fail.append([e, step_in_ep])
                 score_avg = 0.9 * score_avg + 0.1 * score if score_avg != 0 else score
                 print("episode: {:3d} | score avg: {:3.2f} | loss: {:.3f}".format(
                       e, score_avg, np.mean(loss_list)))
                 print("SUCCESS : ", step_list)
                 print("FAIL ", step_list_fail)
+
                 step_in_ep = 0
                 # 에피소드마다 학습 결과 그래프로 저장
+
+
 

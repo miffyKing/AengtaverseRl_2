@@ -171,7 +171,8 @@ def simulate(lists):
             #나중에 for문으로 고쳐!
     return cnt
 
-#input = [50, 200, 80, 80, 80, 80, 80, 80, 80, 1000 ]
+input = [25, 100, 75, 40, 25, 50, 75, 75, 50, 1250]
 #[Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
-
-#print(simulate(input))
+init_simul()
+for i in range(10):
+    print(simulate(input))
