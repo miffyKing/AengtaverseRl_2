@@ -144,9 +144,9 @@ def simulate(lists):
 
     return cnt
 
-input = [30, 200, 180, 80, 20, 250, 100, 100, 100, 1000 ]
-# [Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
-
-init_simul()
-for i in range(0, 10):
-    print(simulate(input))
+# input = [30, 200, 180, 80, 20, 250, 100, 100, 100, 1000 ]
+# # [Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
+#
+# init_simul()
+# for i in range(0, 10):
+#     print(simulate(input))
