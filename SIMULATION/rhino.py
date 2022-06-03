@@ -3,24 +3,19 @@ from animal import Animals, Grid_size, Grid_Grass, Grid, Animal, Site_list_rando
 
 
 class Rhino(Animals):
-    max_life = 600
-    min_life = 400
+    max_life = 250
+    min_life = 200
     site = 2
-    birth_rate = 0.2
+    birth_rate = 0.4
     hunting_rate = 1
     predator = ["Lion"]
     food = ["Grass"]
-    calorie = 700
+    calorie = 500
     calorie_waste_rate = 0  # 초식동물의 경우, 칼로리 소모를 없애고, 번식하는 경우를 제한했다.
     max_calorie = 1500
 
     name = "Rhino"
 
-    def __init__(self, x, y, energy_left):
-        self.time_left = random.randint(self.min_life, self.max_life)
-        self.energy_left = energy_left
-        self.x = x
-        self.y = y
 
     def make_child(self):
         # 일정 칼로리이상이면 번식한다.
@@ -36,8 +31,6 @@ class Rhino(Animals):
                     child_y -= Grid_size
                 if (Grid[child_x][child_y] == 0):
                     a = Rhino(child_x, child_y, self.energy_left / 2)
-                    Animal[self.name].append(a)
-                    Grid[child_x][child_y] = a
                     self.energy_left /= 2
                     return
 

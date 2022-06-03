@@ -4,24 +4,18 @@ from lion import Lion
 from leopard import Leopard
 
 class Snake(Animals):
-    max_life = 400
-    min_life = 200
-    site = 5
-    birth_rate = 0.8
-    hunting_rate = 0.8
+    max_life = 150
+    min_life = 120
+    site = 3
+    birth_rate = 0.3
+    hunting_rate = 0.7
     predator = ["Baboon"]
     food = ["Mouse"]
-    calorie_waste_rate = 4
+    calorie_waste_rate = 2
     max_calorie = 1000
     calorie = 400
 
     name = "Snake"
-
-    def __init__(self, x, y, energy_left):
-        self.time_left = random.randint(self.min_life, self.max_life)
-        self.energy_left = energy_left
-        self.x = x
-        self.y = y
 
     def make_child(self):
         # 일정 칼로리이상이면 번식한다.
@@ -37,7 +31,6 @@ class Snake(Animals):
                     child_y -= Grid_size
                 if (Grid[child_x][child_y] == 0):
                     a = Snake(child_x, child_y, self.energy_left / 2)
-                    Animal[self.name].append(a)
                     self.energy_left /= 2
                     return
 

@@ -3,8 +3,8 @@ from animal import Animals, Grid_size, Grid, Animal, Site_list_random
 
 class Lion(Animals):
 
-    max_life = 280
-    min_life = 180
+    max_life = 100
+    min_life = 70
     site = 5
     birth_rate = 0.15
     hunting_rate = 0.45
@@ -15,11 +15,6 @@ class Lion(Animals):
 
     name = "Lion"
 
-    def __init__(self, x, y, energy_left):
-        self.time_left = random.randint(self.min_life, self.max_life)
-        self.energy_left = energy_left
-        self.x = x
-        self.y = y
 
     def make_child(self):
         # 일정 칼로리이상이면 번식한다.
@@ -35,7 +30,6 @@ class Lion(Animals):
                     child_y -= Grid_size
                 if (Grid[child_x][child_y] == 0):
                     a = Lion(child_x, child_y, self.energy_left / 2)
-                    Animal[self.name].append(a)
                     self.energy_left /= 2
                     return
 
@@ -43,4 +37,4 @@ class Lion(Animals):
         self.check_site()
         if self.energy_left >= self.max_calorie * self.threshold_birth :
             if 1 - self.birth_rate < random.random():
-               self.make_child()
+                self.make_child()

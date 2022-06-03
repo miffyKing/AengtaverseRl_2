@@ -88,7 +88,7 @@ class Animals:
     max_life = 0
     min_life = 0
     max_calorie = 0
-    threshold_birth = 0.7
+    threshold_birth = 0.8
     cnt = 0
 
     name = "Animals"
@@ -98,6 +98,8 @@ class Animals:
         self.energy_left = energy_left
         self.x = x
         self.y = y
+        Animal[self.name].append(self)
+        Grid[x][y] = self
 
     def move(self, x, y):  # 동물의 이동 함수 (self.x + x, self.y+y) 로 이동
 
@@ -201,6 +203,7 @@ class Animals:
                         Animal[what_to_eat].remove(Grid[min_dirx][min_diry])
                         self.eat_food(min_dirx, min_diry)
                         self.move(min_dirx - self.x, min_diry - self.y)
+                        return
                     else:
                         #move만 한다. (아직 충분히 가까이 있지 않음)
                         vec_x = min_dirx - self.x
@@ -230,7 +233,7 @@ class Animals:
                                     return
                         # 먹이 검사에는 성공했지만, 먹이로 가는 방향에 빈자리가 하나도 없어서 제자리에 정지
                         self.move(0, 0)
-                        return
+                    return
 
         # 포식자도 없고, 먹이 못 찾았을 경우
         for i in range(1, self.site + 1):
@@ -266,4 +269,5 @@ class Animals:
                 if (Grid[child_x][child_y] == 0):
                     a = Animals(child_x, child_y, self.energy_left / 2)
                     self.energy_left /= 2
+                    Grid[child_x][child_y] = a
                     return

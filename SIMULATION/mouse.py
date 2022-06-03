@@ -3,10 +3,10 @@ from animal import Animals, Grid_size, Grid_Grass, Grid, Animal, Site_list_rando
 
 
 class Mouse(Animals):
-    max_life = 300
-    min_life = 200
+    max_life = 150
+    min_life = 100
     site = 2
-    birth_rate = 0.7
+    birth_rate = 0.95
     hunting_rate = 1
     predator = ["Snake"]
     food = ["Grass"]
@@ -16,11 +16,6 @@ class Mouse(Animals):
 
     name = "Mouse"
 
-    def __init__(self, x, y, energy_left):
-        self.time_left = random.randint(self.min_life, self.max_life)
-        self.energy_left = energy_left
-        self.x = x
-        self.y = y
 
     def make_child(self):
         # 일정 칼로리이상이면 번식한다.
@@ -36,8 +31,6 @@ class Mouse(Animals):
                     child_y -= Grid_size
                 if (Grid[child_x][child_y] == 0):
                     a = Mouse(child_x, child_y, self.energy_left / 2)
-                    Animal[self.name].append(a)
-                    Grid[child_x][child_y] = a
                     self.energy_left /= 2
                     return
 

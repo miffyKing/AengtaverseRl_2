@@ -5,24 +5,18 @@ from leopard import Leopard
 
 class Baboon(Animals):
 
-    max_life = 300
-    min_life = 200
-    site = 5
-    birth_rate = 0.8
-    hunting_rate = 0.6
+    max_life = 120
+    min_life = 90
+    site = 4
+    birth_rate = 0.6
+    hunting_rate = 0.9
     predator = ["Leopard"]
     food = ["Snake"]
     calorie_waste_rate = 2
-    max_calorie = 800
-    calorie = 300
+    max_calorie = 900
+    calorie = 150
 
     name = "Baboon"
-
-    def __init__(self, x, y, energy_left):
-        self.time_left = random.randint(self.min_life, self.max_life)
-        self.energy_left = energy_left
-        self.x = x
-        self.y = y
 
     def make_child(self):
         # 일정 칼로리이상이면 번식한다.
@@ -38,7 +32,6 @@ class Baboon(Animals):
                     child_y -= Grid_size
                 if (Grid[child_x][child_y] == 0):
                     a = Baboon(child_x, child_y, self.energy_left / 2)
-                    Animal[self.name].append(a)
                     self.energy_left /= 2
                     return
 

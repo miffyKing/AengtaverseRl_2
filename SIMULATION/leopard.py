@@ -3,23 +3,17 @@ from animal import Animals, Grid_size, Grid, Animal, Site_list_random
 
 class Leopard(Animals):
 
-    max_life = 300
-    min_life = 200
-    site = 2
-    birth_rate = 0.2
-    hunting_rate = 0.28  # 레오파드가 먹는 종류가 너무 많다
+    max_life = 70
+    min_life = 50
+    site = 3
+    birth_rate = 0.05
+    hunting_rate = 0.12  # 레오파드가 먹는 종류가 너무 많다
     predator = []
     food = ["Impala", "Baboon", "Skunk"]
-    calorie_waste_rate = 10
+    calorie_waste_rate = 20
     max_calorie = 1000
 
     name = "Leopard"
-
-    def __init__(self, x, y, energy_left):
-        self.time_left = random.randint(self.min_life, self.max_life)
-        self.energy_left = energy_left
-        self.x = x
-        self.y = y
 
     def make_child(self):
         # 일정 칼로리이상이면 번식한다.
@@ -34,8 +28,7 @@ class Leopard(Animals):
                 if (child_y >= Grid_size):
                     child_y -= Grid_size
                 if (Grid[child_x][child_y] == 0):
-                    a =Leopard(child_x, child_y, self.energy_left / 2)
-                    Animal[self.name].append(a)
+                    a = Leopard(child_x, child_y, self.energy_left / 2)
                     self.energy_left /= 2
                     return
 
@@ -43,4 +36,4 @@ class Leopard(Animals):
         self.check_site()
         if self.energy_left >= self.max_calorie * self.threshold_birth :
             if 1 - self.birth_rate < random.random():
-               self.make_child()
+                self.make_child()

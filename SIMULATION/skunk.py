@@ -1,27 +1,20 @@
 import random
 from animal import Animals,  Grid_size, Grid, Animal, Site_list_random
-from lion import Lion
-from leopard import Leopard
 
 class Skunk(Animals):
-    max_life = 300
-    min_life = 200
-    site = 4
-    birth_rate = 0.25
-    hunting_rate = 1
+    max_life = 90
+    min_life = 80
+    site = 3
+    birth_rate = 0.5
+    hunting_rate = 0.8
     predator = ["Leopard"]
-    food = ["Grasshopper", "Mouse"]
-    calorie_waste_rate = 4
-    max_calorie = 600
-    calorie = 350
+    food = ["Grasshopper"]
+    calorie_waste_rate = 2
+    max_calorie = 700
+    calorie = 100
 
     name = "Skunk"
 
-    def __init__(self, x, y, energy_left):
-        self.time_left = random.randint(self.min_life, self.max_life)
-        self.energy_left = energy_left
-        self.x = x
-        self.y = y
 
     def make_child(self):
         # 일정 칼로리이상이면 번식한다.
@@ -37,7 +30,6 @@ class Skunk(Animals):
                     child_y -= Grid_size
                 if (Grid[child_x][child_y] == 0):
                     a = Skunk(child_x, child_y, self.energy_left / 2)
-                    Animal[self.name].append(a)
                     self.energy_left /= 2
                     return
 

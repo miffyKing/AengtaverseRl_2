@@ -2,7 +2,7 @@ import random
 from lion import Lion
 from impala import Impala
 from baboon import Baboon
-from animal import Grid, Grid_size, Animal_lists, Grid_Grass, make_Site_list_random, make_Site_list_ordered
+from animal import Grid, Grid_size, Animal_lists, Grid_Grass, make_Site_list_random, make_Site_list_ordered, Animal_Name
 from rhino import Rhino
 from grass import Grass
 from leopard import Leopard
@@ -75,8 +75,6 @@ def gen_species(idx, num):
         x = Grid_tmp[rand][0]
         y = Grid_tmp[rand][1]
         a = Animal_class[idx](x, y, int(Animal_class[idx].max_calorie/2))
-        Animal_lists[idx].append(a)
-        Grid[x][y] = a
         del Grid_tmp[rand]
         length_Grid_left -= 1
 
@@ -97,8 +95,6 @@ def gen_grass(idx, num):
         x = Grid_tmp[rand][0]
         y = Grid_tmp[rand][1]
         a = Animal_class[idx](x, y, int(Animal_class[idx].max_calorie / 2))
-        Animal_lists[idx].append(a)
-        Grid_Grass[x][y] = a
         del Grid_tmp[rand]
         length_Grid_left -= 1
 
@@ -116,7 +112,7 @@ def simulate(lists):
     cnt = 0
     length = len(lists)
     while(cnt < 1000):
-        #print(cnt, end=" ")
+        # print(cnt, end=" ")
         cnt+=1
         # Problem is removing lion during the iteration
 
@@ -132,46 +128,25 @@ def simulate(lists):
                     j -= 1
                 if (tmp == 0):
                     break
-            #print(len(list_of_animal), end=" ")
+            # print(len(list_of_animal), end=" ")
         # make grass
-        gen_grass(length -1, 10)
-        #rint(len(Animal_lists[length-1]), end=" ")
-        #print()
-        if(len(Animal_lists[0]) == 0):
-            #print("No Lions");
-            return cnt
-        if(len(Animal_lists[1])==0):
-            #print("No Impala")
-            return cnt
-        if (len(Animal_lists[2]) == 0):
-            #print("No Baboon")
-            return cnt
-        if (len(Animal_lists[3]) == 0):
-            #print("No Rhino")
-            return cnt
-        if (len(Animal_lists[4]) == 0):
-            #print("No Grass")
-            return cnt
-        if (len(Animal_lists[5]) == 0):
-            #print("No Leopard")
-            return cnt
-        if (len(Animal_lists[6]) == 0):
-            #print("No Mouse")
-            return cnt
-        if (len(Animal_lists[7]) == 0):
-            #print("No Grasshopper")
-            return cnt
-        if (len(Animal_lists[8]) == 0):
-            #print("No Skunk")
-            return cnt
-        if (len(Animal_lists[9]) == 0):
-            #print("No Snake")
-            return cnt
+        gen_grass(length -1, 50)
+        # print(len(Animal_lists[length-1]), end=" ")
+        # print()
+        for i in range(0, 10):
+            if len(Animal_lists[i]) == 0:
+                print("No", end=" ")
+                print(Animal_Name[i])
+                for i in range(0, len(Animal_lists)):
+                    print(len(Animal_lists[i]), end=" ")
+                print()
+                return cnt
 
-            #나중에 for문으로 고쳐!
     return cnt
 
-#input = [50, 200, 80, 80, 80, 80, 80, 80, 80, 1000 ]
-#[Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
+input = [30, 200, 180, 80, 20, 250, 100, 100, 100, 1000 ]
+# [Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
 
-#print(simulate(input))
+init_simul()
+for i in range(0, 10):
+    print(simulate(input))
