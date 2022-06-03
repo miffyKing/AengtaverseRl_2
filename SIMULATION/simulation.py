@@ -10,7 +10,7 @@ from mouse import Mouse
 from grasshopper import Grasshopper
 from skunk import Skunk
 from snake import Snake
-
+import numpy as np
 cnt = 0
 def print_Grid(cnt):
     print("Printing Grid ", cnt)
@@ -144,9 +144,23 @@ def simulate(lists):
 
     return cnt
 
-# input = [30, 200, 180, 80, 20, 250, 100, 100, 100, 1000 ]
-# # [Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
-#
+def simulate2(lists):
+    tick = 0
+    for i in range(0,10):
+        tick += lists[i]*i
+    tick = tick%17 * 10 + np.random.randint(0,61)- 30
+    return tick
+
+
+
+
+
+# input = [25, 100, 75, 40, 25, 50, 75, 75, 50, 1250]
+# #       [30, 200, 180, 80, 20, 250, 100, 100, 100, 1000 ]
+# #Threshold  [50, 200, 150, 80, 50, 100, 150, 150, 100, 2500]
+# #           [25, 100, 75, 40, 25, 50, 75, 75, 50, 1250]
+# # # [Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
+# #
 # init_simul()
 # for i in range(0, 10):
 #     print(simulate(input))

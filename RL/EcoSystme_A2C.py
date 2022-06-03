@@ -95,9 +95,13 @@ if __name__ == "__main__":
 
     scores, episodes = [], []
     score_avg = 0
+    success_in_row = 0
+    fin_ep = False
     # [Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
     animal_array = [25, 100, 75, 40, 25, 50, 75, 75, 50, 1250]
-    num_episode = 1000
+    prev_state = animal_array
+    prev_state = np.reshape(prev_state, [1, state_size])
+    num_episode = 3000
     simulation.init_simul()
 
     step_list = []
@@ -134,8 +138,16 @@ if __name__ == "__main__":
                 if score != -3000:
                     print("Success, Ecosystem's Animal Number : ",state)
                     f.writelines(["Success, Ecosystem's Animal Number : ",str(state),"\n"])
+                    if np.array_equal(prev_state,state):
+                        success_in_row += 1
+                        if success_in_row == 5:
+                            fin_ep = True
+                            break
+                    else :
+                        success_in_row = 0
                     step_list.append([e, step_in_ep])
                 else:
+                    success_in_row = 0
                     print("Fail, Ecosystem's Animal Number : ",state)
                     f.writelines(["Fail, Ecosystem's Animal Number : ",str(state),"\n"])
                     step_list_fail.append([e, step_in_ep])
@@ -144,9 +156,9 @@ if __name__ == "__main__":
                       e, score_avg, np.mean(loss_list)))
                 print("SUCCESS : ", step_list)
                 print("FAIL ", step_list_fail)
-
+                prev_state = state
                 step_in_ep = 0
-                # 에피소드마다 학습 결과 그래프로 저장
-
+        if fin_ep :
+            break
 
 

@@ -1,3 +1,2 @@
-Success, Ecosystem's Animal Number : [[  25  100   75   40   25   50   75   75   50 1000]]
-Success, Ecosystem's Animal Number : [[  25  100   90   40   25   50   75   75   50 1250]]
 Success, Ecosystem's Animal Number : [[  25  100   75   40   30   50   75   75   50 1250]]
+Success, Ecosystem's Animal Number : [[  30  100   75   40   25   50   90   75   50 1250]]
