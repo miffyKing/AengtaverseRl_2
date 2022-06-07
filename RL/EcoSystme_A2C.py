@@ -32,8 +32,6 @@ class A2C(tf.keras.Model):
         value = self.critic_out(critic_x)
         return policy, value
 
-
-# 카트폴 예제에서의 액터-크리틱(A2C) 에이전트
 class A2CAgent:
     def __init__(self, action_size):
         self.render = False
@@ -84,9 +82,7 @@ class A2CAgent:
 
 
 if __name__ == "__main__":
-    # CartPole-v1 환경, 최대 타임스텝 수가 500
     env = Env.EcoSystemEnv()
-    # 환경으로부터 상태와 행동의 크기를 받아옴
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
 
@@ -124,18 +120,13 @@ if __name__ == "__main__":
             next_state, reward, done = env.step(action)
             next_state = np.reshape(next_state, [1, state_size])
 
-            # 타임스텝마다 보상 0.1, 에피소드가 중간에 끝나면 -1 보상
-            score = reward
-            #reward = 0.1 if not done or score == 500 else -1
-
-            # 매 타임 스텝마다 학습
             loss = agent.train_model(state, action, reward, next_state, done)
             loss_list.append(loss)
             state = next_state
             print("Episode", e, "step",step_in_ep,"Simulated with state : ", state)
             if done:
                 # 에피소드마다 학습 결과 출력
-                if score != -3000:
+                if reward != -3000:
                     print("Success, Ecosystem's Animal Number : ",state)
                     f.writelines(["Success, Ecosystem's Animal Number : ",str(state),"\n"])
                     if np.array_equal(prev_state,state):
@@ -151,14 +142,12 @@ if __name__ == "__main__":
                     print("Fail, Ecosystem's Animal Number : ",state)
                     f.writelines(["Fail, Ecosystem's Animal Number : ",str(state),"\n"])
                     step_list_fail.append([e, step_in_ep])
-                score_avg = 0.9 * score_avg + 0.1 * score if score_avg != 0 else score
-                print("episode: {:3d} | score avg: {:3.2f} | loss: {:.3f}".format(
-                      e, score_avg, np.mean(loss_list)))
                 print("SUCCESS : ", step_list)
                 print("FAIL ", step_list_fail)
                 prev_state = state
                 step_in_ep = 0
-        if fin_ep :
+        if fin_ep:
+            f.close()
             break
 
 
