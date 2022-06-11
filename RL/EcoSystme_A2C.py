@@ -146,8 +146,17 @@ if __name__ == "__main__":
                 print("FAIL ", step_list_fail)
                 prev_state = state
                 step_in_ep = 0
+
         if fin_ep:
             f.close()
             break
+
+    if not fin_ep:
+        print("Decrease the goal or increase the number of episodes")
+        f.close()
+    else:
+        f = open("animal_array.txt", 'w')
+        f.writelines(str(prev_state))
+        f.close()
 
 

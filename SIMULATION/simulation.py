@@ -133,17 +133,16 @@ def simulate(lists):
         gen_grass(length -1, 50)
         # print(len(Animal_lists[length-1]), end=" ")
         # print()
-        gen_grass(length - 1, 50)
-        # 7~14, 21~28, 35~42
+        # # 7~14, 21~28, 35~42
         if (cnt % 28 > 14) and (cnt % 28 < 28):
             gen_grass(length - 1, 50)
         for i in range(0, 10):
             if len(Animal_lists[i]) == 0:
-                print("No", end=" ")
-                print(Animal_Name[i])
-                for i in range(0, len(Animal_lists)):
-                    print(len(Animal_lists[i]), end=" ")
-                print()
+                #print("No", end=" ")
+                #print(Animal_Name[i])
+                #for i in range(0, len(Animal_lists)):
+                #    print(len(Animal_lists[i]), end=" ")
+                #print()
                 return cnt
 
     return cnt
@@ -156,15 +155,11 @@ def simulate2(lists):
     return tick
 
 
+#[Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
+input = [35, 80, 75, 40, 35, 50, 50, 75, 50, 1250]
+#Threshold  [50, 200, 150, 80, 50, 100, 150, 150, 100, 2500]
 
-
-# if __name__ == "__main__":
-#     input = [25, 100, 75, 40, 25, 50, 75, 75, 50, 1250]
-#     #       [30, 200, 180, 80, 20, 250, 100, 100, 100, 1000 ]
-#     #Threshold  [50, 200, 150, 80, 50, 100, 150, 150, 100, 2500]
-#     #           [25, 100, 75, 40, 25, 50, 75, 75, 50, 1250]
-#     # # [Lion, Impala, Baboon, Rhino,  Leopard, Mouse, Grasshopper, Skunk,Snake, Grass,]
-#     #
-#     init_simul()
-#     for i in range(0, 10):
-#         print(simulate(input))
+init_simul()
+print("simulate with array : ", input)
+for i in range(0, 5):
+    print("simulation", i, ":", simulate(input))
